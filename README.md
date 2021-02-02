@@ -1,10 +1,13 @@
+![Preview](images/preview.png)
+
 # DzNoteEditor
 
 ## Delphi Property Editor for TStrings supporting formatted languages with syntax highlight
 
-![Delphi Supported Versions](https://img.shields.io/badge/Delphi%20Supported%20Versions-XE2..10.3%20Rio-blue.svg)
+![Delphi Supported Versions](https://img.shields.io/badge/Delphi%20Supported%20Versions-XE3..10.4-blue.svg)
 ![Platforms](https://img.shields.io/badge/Platforms-Win32%20and%20Win64-red.svg)
 ![Auto Install](https://img.shields.io/badge/-Auto%20Install%20App-orange.svg)
+![VCL and FMX](https://img.shields.io/badge/-VCL%20and%20FMX-lightgrey.svg)
 
 - [What's New](#whats-new)
 - [Component Description](#component-description)
@@ -15,6 +18,27 @@
 - [CnPack CnWizards conflict](#cnpack-cnwizards-conflict)
 
 ## What's New
+
+- 02/01/2021 (Version 1.5)
+
+   - Removed Delphi XE2 from the list of environments as it was never possible to compile in this version.
+
+- 12/18/2020 (Version 1.4)
+
+   - Updated Component Installer app (Fixed call to rsvars.bat when Delphi is installed in a path containing spaces characters).
+
+- 10/31/2020 (Version 1.3)
+
+   - Included Delphi 10.4 auto-install support.
+
+- 10/27/2020 (Version 1.2)
+
+   - Fixed previous Delphi versions (at least on XE2, XE3, XE4 and XE5) package tag. It was causing package compilation error.
+   - Fixed the use of System.ImageList unit because it's only available from XE8.
+
+- 10/26/2020 (Version 1.1)
+
+   - Updated CompInstall to version 2.0 (now supports GitHub auto-update)
 
 - 05/03/2020
 
@@ -69,7 +93,7 @@ Close Delphi IDE and run **CompInstall.exe** app to auto install component into 
 
 6. Add "Win32\Release" sub folder to Delphi Library Path (Tools\Options), on 32-bit option. If you will use 64 bit platform, add "Win64\Release" sub folder on 64-bit option.
 
-Supports Delphi XE2..Delphi 10.3 Rio
+Supports Delphi XE3..Delphi 10.4
 
 ## Hidden Shortcuts
 

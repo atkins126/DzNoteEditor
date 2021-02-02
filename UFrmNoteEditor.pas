@@ -1,6 +1,6 @@
 {------------------------------------------------------------------------------
 DzNoteEditor property editor
-Developed by Rodrigo Depiné Dalpiaz (digão dalpiaz)
+Developed by Rodrigo Depine Dalpiaz (digao dalpiaz)
 Property Editor to TStrings class integrated in Delphi IDE
 
 https://github.com/digao-dalpiaz/DzNoteEditor
@@ -13,9 +13,10 @@ unit UFrmNoteEditor;
 interface
 
 uses Vcl.Forms, System.Classes, System.Actions, Vcl.ActnList,
-  SynEditMiscClasses, SynEditSearch, Vcl.Menus, System.ImageList, Vcl.ImgList,
+  SynEditMiscClasses, SynEditSearch, Vcl.Menus, Vcl.ImgList,
   Vcl.Controls, Vcl.ComCtrls, Vcl.ToolWin, SynEdit, Vcl.StdCtrls, Vcl.Buttons,
   Vcl.ExtCtrls,
+  {$IF CompilerVersion >= 29}System.ImageList, {$ENDIF}
   //
   SynEditHighlighter, SynEditTypes,
   Winapi.Windows, Winapi.Messages,
@@ -105,19 +106,19 @@ type
       TMenuItemSyn = class(TMenuItem)
       public
         SynClass: TSynCustomHighlighterClass;
-        LangID, LangDesc, PathReg: String;
+        LangID, LangDesc, PathReg: string;
       end;
     var LastSynMenuItem: TMenuItemSyn;
 
     Search_Opt: TSynSearchOptions;
-    Search_Find, Search_Replace: String;
+    Search_Find, Search_Replace: string;
     Search_Em: Integer;
 
     NextClip: HWND;
     procedure ClipChange(var Msg: TWMChangeCBChain); message WM_CHANGECBCHAIN;
     procedure ClipDraw(var Msg: TWMDrawClipboard); message WM_DRAWCLIPBOARD;
 
-    procedure CreateSyns(const SavedName: String);
+    procedure CreateSyns(const SavedName: string);
     procedure OnMenuItemSynClick(Sender: TObject);
   public
     PStr: TStrings;
@@ -136,7 +137,7 @@ uses
 
 const REG_PATH = 'Digao\NoteEditor';
 
-function RegReadString(Reg: TRegistry; const aName, aDefault: String): String;
+function RegReadString(Reg: TRegistry; const aName, aDefault: string): string;
 begin
   if Reg.ValueExists(aName) then
     Result := Reg.ReadString(aName)
@@ -144,7 +145,7 @@ begin
     Result := aDefault;
 end;
 
-function RegReadInteger(Reg: TRegistry; const aName: String;
+function RegReadInteger(Reg: TRegistry; const aName: string;
   const aDefault: Integer): Integer;
 begin
   if Reg.ValueExists(aName) then
@@ -153,7 +154,7 @@ begin
     Result := aDefault;
 end;
 
-function RegReadBoolean(Reg: TRegistry; const aName: String;
+function RegReadBoolean(Reg: TRegistry; const aName: string;
   const aDefault: Boolean): Boolean;
 begin
   if Reg.ValueExists(aName) then
@@ -200,10 +201,10 @@ end;
 //
 
 type TMyHC = class
-  ID, Caption: String;
+  ID, Caption: string;
   &Class: TSynCustomHighlighterClass;
 end;
-procedure TFrmNoteEditor.CreateSyns(const SavedName: String);
+procedure TFrmNoteEditor.CreateSyns(const SavedName: string);
 var C: TSynCustomHighlighterClass;
     MI: TMenuItemSyn;
     L: TSynHighlighterList;
@@ -414,7 +415,7 @@ end;
 procedure TFrmNoteEditor.MStatusChange(Sender: TObject;
   Changes: TSynStatusChanges);
 
-var aCount: String;
+var aCount: string;
 begin
     if (scCaretX in Changes) or
        (scCaretY in Changes) then
